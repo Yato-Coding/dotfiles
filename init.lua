@@ -36,8 +36,8 @@ vim.keymap.set('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true })  
 
 -- telescope
-vim.keymap.set('n', '<leader>fc', ':Telescope<CR>', { desc = 'Telescope' })
-vim.keymap.set('n', '<leader>fa', ':Telescope agrolens query=functions', { desc = 'Telescope agrolens' })
+vim.keymap.set('n', '<leader>f', ':Telescope<CR>', { desc = 'Telescope' })
+vim.keymap.set('n', '<leader>fa', ':Telescope agrolens query=functions<CR>', { desc = 'Telescope agrolens' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Telescope buffers' })
