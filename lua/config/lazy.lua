@@ -27,9 +27,12 @@ vim.opt.tabstop = 4            -- Set tab width to 4 spaces
 vim.opt.shiftwidth = 4         -- Set indentation width to 4 spaces
 vim.opt.expandtab = true       -- Use spaces instead of tabs
 
+local theme = vim.g.theme
+
 -- Setup lazy.nvim
 require('lazy').setup({
     spec = {
+        {'morhetz/gruvbox'},
         {"folke/tokyonight.nvim",
             lazy = false,
             priority = 1000,
@@ -83,13 +86,22 @@ require('lazy').setup({
                         require('lspconfig')[server_name].setup {
                             capabilities = require('cmp_nvim_lsp').default_capabilities()
                         }
+                    end,
+                    -- Next, you can provide a dedicated handler for specific servers.
+                    -- For example, a handler override for the `rust_analyzer`:
+                    ['harper_ls'] = function ()
+                        require('lspconfig').harper_ls.setup {
+                            settings = {
+                                ['harper-ls'] = {
+                                    linters = {
+                                        avoid_curses = false
+                                    }
+                                }
+                            }
+                        }
                     end
                 }
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                --['rust_analyzer'] = function ()
-                --  require('rust-tools').setup {}
-                --end
+
             end -- Closing function for config
         },
         {'neovim/nvim-lspconfig'},
@@ -168,7 +180,7 @@ require('lazy').setup({
         },
         {'nvim-lualine/lualine.nvim',
             dependencies = {'nvim-tree/nvim-web-devicons'},
-            opts = { theme = 'tokyonight' },  -- Changed 'options' to 'opts'
+            opts = { theme = theme },  -- Changed 'options' to 'opts'
             config = function()
                 require('lualine').setup({})
             end,
@@ -191,7 +203,7 @@ require('lazy').setup({
 
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { 'tokyonight' } },
+    install = { colorscheme = { theme }},
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
