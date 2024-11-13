@@ -30,7 +30,11 @@ vim.opt.expandtab = true       -- Use spaces instead of tabs
 -- Setup lazy.nvim
 require('lazy').setup({
     spec = {
-        { 'ellisonleao/gruvbox.nvim', priority = 1000 , config = true},
+        {"folke/tokyonight.nvim",
+            lazy = false,
+            priority = 1000,
+            opts = {},
+        },
         { 'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make'
         },
@@ -164,7 +168,7 @@ require('lazy').setup({
         },
         {'nvim-lualine/lualine.nvim',
             dependencies = {'nvim-tree/nvim-web-devicons'},
-            opts = { theme = 'gruvbox' },  -- Changed 'options' to 'opts'
+            opts = { theme = 'tokyonight' },  -- Changed 'options' to 'opts'
             config = function()
                 require('lualine').setup({})
             end,
@@ -187,7 +191,7 @@ require('lazy').setup({
 
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { 'gruvbox' } },
+    install = { colorscheme = { 'tokyonight' } },
     -- automatically check for plugin updates
     checker = { enabled = true },
 })

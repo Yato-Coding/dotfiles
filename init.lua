@@ -3,7 +3,7 @@ require('leap').create_default_mappings()
 
 -- tab indent on select
 vim.keymap.set('v', '<tab>', '>gv', { noremap = true, silent = true })
-vim.keymap.set('v', '<S-tab>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<S-tab>', '<gv', { noremap = true, silent = true })
 
 -- g
 vim.keymap.set('n', '<leader>g', ':noh<CR>', { noremap = true, silent = true })
@@ -11,7 +11,10 @@ vim.keymap.set('n', 'g*', '*Ncgn', { noremap = true })
 
 -- ctrl-c/ctrl-v
 vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-v>', '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
+
+-- ctrl-w
+vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
 
 -- Highlighting
 vim.keymap.set('n', '<leader>he', ':HSExport<CR>', {noremap = true, silent = true})
@@ -48,7 +51,7 @@ vim.keymap.set('n', '<leader>o', ':Oil<CR>', {noremap = true, silent = true})
 
 -- colorscheme
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme tokyonight]])
 
 -- disable the ugly ass gutter
 vim.diagnostic.config({
